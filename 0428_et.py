@@ -81,4 +81,16 @@ dec1990s= root.find("./genre[@category='Action']/decade[@years='1990s']")
 dec1990s.remove(xmen)
 print(ET.tostring(action, encoding='utf8').decode('utf8'))
 
+action= root.find("./genre[@category='Thriller']")
+new_dec= ET.SubElement(action, 'decade')
+new_dec.attrib["years"]= '2000s'
+print(ET.tostring(action, encoding='utf8').decode('utf8'))
+
+xmen= root.find("./genre/decade/movie[@title='American Psycho']")
+dec2000s= root.find("./genre[@category='Thriller']/decade[@years='2000s']")
+dec2000s.append(xmen)
+dec1980s= root.find("./genre[@category='Thriller']/decade[@years='1980s']")
+dec1980s.remove(xmen)
+print(ET.tostring(action, encoding='utf8').decode('utf8'))
+
 tree.write("movies.xml")
